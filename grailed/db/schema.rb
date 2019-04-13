@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 2019_04_13_025548) do
 
   create_table "users", force: :cascade do |t|
     t.string "email"
+    t.string "password"
     t.string "picture"
     t.text "bio"
     t.string "city"
@@ -80,7 +81,6 @@ ActiveRecord::Schema.define(version: 2019_04_13_025548) do
     t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "password"
     t.string "name"
   end
 

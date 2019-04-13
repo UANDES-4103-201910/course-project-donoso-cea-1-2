@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root "home#start"
   resources :flag_pos
   resources :votes
   resources :users
