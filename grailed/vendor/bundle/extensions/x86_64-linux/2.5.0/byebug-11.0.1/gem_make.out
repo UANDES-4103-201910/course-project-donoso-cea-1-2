@@ -1,0 +1,19 @@
+current directory: /home/billy/Project/course-project-donoso-cea-1-2/grailed/vendor/bundle/gems/byebug-11.0.1/ext/byebug
+/home/billy/.rvm/rubies/ruby-2.5.1/bin/ruby -I /home/billy/.rvm/rubies/ruby-2.5.1/lib/ruby/site_ruby/2.5.0 -r ./siteconf20190412-25220-1to5y3i.rb extconf.rb
+creating Makefile
+
+current directory: /home/billy/Project/course-project-donoso-cea-1-2/grailed/vendor/bundle/gems/byebug-11.0.1/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /home/billy/Project/course-project-donoso-cea-1-2/grailed/vendor/bundle/gems/byebug-11.0.1/ext/byebug
+make "DESTDIR="
+compiling breakpoint.c
+compiling byebug.c
+compiling context.c
+compiling locker.c
+compiling threads.c
+linking shared-object byebug/byebug.so
+
+current directory: /home/billy/Project/course-project-donoso-cea-1-2/grailed/vendor/bundle/gems/byebug-11.0.1/ext/byebug
+make "DESTDIR=" install
+/usr/bin/install -m 0755 byebug.so ./.gem.20190412-25220-aw9iyh/byebug
