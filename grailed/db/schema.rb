@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_12_130320) do
+ActiveRecord::Schema.define(version: 2019_04_13_013830) do
 
   create_table "blacklists", force: :cascade do |t|
     t.integer "user_id"
@@ -59,12 +59,8 @@ ActiveRecord::Schema.define(version: 2019_04_12_130320) do
     t.string "visible"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "votes_id"
-    t.integer "comments_id"
     t.integer "user_id"
-    t.index ["comments_id"], name: "index_posts_on_comments_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
-    t.index ["votes_id"], name: "index_posts_on_votes_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -76,12 +72,8 @@ ActiveRecord::Schema.define(version: 2019_04_12_130320) do
     t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "votes_id"
-    t.integer "comments_id"
-    t.integer "posts_id"
-    t.index ["comments_id"], name: "index_users_on_comments_id"
-    t.index ["posts_id"], name: "index_users_on_posts_id"
-    t.index ["votes_id"], name: "index_users_on_votes_id"
+    t.string "password"
+    t.string "name"
   end
 
   create_table "votes", force: :cascade do |t|
