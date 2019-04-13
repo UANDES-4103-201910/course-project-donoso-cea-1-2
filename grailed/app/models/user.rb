@@ -6,7 +6,7 @@ class User < ApplicationRecord
 	#actions
 	before_save :default_values
 	#validates
-	validates :country, :name, :city, presence: true
+	validates :country, :city, presence: true
 	validates :password , length: {minimum: 5 , maximum: 12}
 	#defs
 	def default_values

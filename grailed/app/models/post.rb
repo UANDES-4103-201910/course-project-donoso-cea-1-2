@@ -5,8 +5,8 @@ class Post < ApplicationRecord
 	#actions
 	before_save :default_values
 	#validates
-	validates :city, :country, :title, :description, presence: true
-	validates :security ,acceptance: {accept: ['open','closed']}
+	#validates :city, :country, :title, :description, presence: true
+	#validates :security ,acceptance: {accept: ['open','closed']}
 	#defs
 	def default_values
 		self.status = "uns" #uns--> unsolved - s-->solved
