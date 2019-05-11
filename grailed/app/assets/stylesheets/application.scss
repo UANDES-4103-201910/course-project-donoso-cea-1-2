@@ -18,3 +18,24 @@
 @import "bootstrap";
 //= require jquery
 //= require bootstrap-sprockets
+
+
+.usuario{
+  background-color: rgba(140, 147, 137, 0.34);
+  width: 25em;
+  height: auto;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: cornflowerblue;
+
+}
+
+.post{
+  background-color: rgba(140, 147, 137, 0.34);
+  width: 25em;
+  height: auto;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: cornflowerblue;
+
+}

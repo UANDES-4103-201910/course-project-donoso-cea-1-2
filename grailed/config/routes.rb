@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   get 'admin/admins'
   get 'profile/userprofile'
   get 'dumpster/thedumpster'
-  root "home#start"
+
+  get 'home/start' , to: 'home#start'
+  root "home#logIn"
   #get  "thedumpster" , to :"dumpster#thedumpster"
   resources :flag_pos
   resources :votes
