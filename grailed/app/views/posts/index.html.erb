@@ -1,3 +1,11 @@
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+<!--
 <p id="notice"><%= notice %></p>
 
 <h1>Some Complains from our lovely users!</h1>
@@ -6,7 +14,7 @@
     <% @posts.each do |post| %>
       <ul>
         <label>User:</label>
-        <li><%= post.user.id %></li>
+        <li><%= post.user.email %></li>
         <label>Comment:</label>
         <li><%= post.description %></li>
         <li><%= link_to 'Show', post %></li>
@@ -19,3 +27,44 @@
 <br>
 
 <%= link_to 'New Post', new_post_path %>
+-->
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h2 class="page-header">Some Complains from our lovely users!</h2>
+        <section class="comment-list">
+          <!-- First Comment -->
+          <% @posts.each do |post| %>
+
+            <article class="row">
+              <div class="col-md-2 col-sm-2 hidden-xs">
+                <figure class="thumbnail">
+                  <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
+                  <figcaption class="text-center"><%=post.user.email%> </figcaption>
+                </figure>
+              </div>
+              <div class="col-md-10 col-sm-10">
+                <div class="panel panel-default arrow left">
+                  <div class="panel-body">
+                    <header class="text-left">
+                      <div class="comment-user"><i class="fa fa-user"></i> <%= post.user.email %> </div>
+                      <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> Dec 16, 2014</time>
+                    </header>
+                    <div class="comment-post">
+                      <p>
+                        <%=post.description%>
+                      </p>
+                    </div>
+                    <p class="text-right"><!--<a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a>-->
+                      <a><%= link_to 'Show', post %> </a>
+                      <a><%= link_to 'Edit', edit_post_path(post) %> </a>
+                      <a><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %> </a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </article>
+  <%= link_to 'New Post', new_post_path %>
+<% end -%>
