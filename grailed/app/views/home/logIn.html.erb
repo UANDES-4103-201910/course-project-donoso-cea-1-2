@@ -7,41 +7,39 @@
 </header>
 
 <body>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-<div class="container-fluid">
-  <div class="row no-gutter">
-    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
-    <div class="col-md-8 col-lg-6">
-      <div class="login d-flex align-items-center py-5">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-9 col-lg-8 mx-auto">
-              <h3 class="login-heading mb-4">Welcome back!</h3>
-              <form>
-                <div class="form-label-group">
-                  <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                  <label for="inputEmail">Email address</label>
-                </div>
-
-                <div class="form-label-group">
-                  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                  <label for="inputPassword">Password</label>
-                </div>
-
-                <div class="custom-control custom-checkbox mb-3">
-                  <input type="checkbox" class="custom-control-input" id="customCheck1">
-                  <label class="custom-control-label" for="customCheck1">Remember password</label>
-                </div>
-                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
-                <hr class="my-4">
-                <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>
-
-                <div class="text-center">
-                  <a class="small" href="#">Forgot password?</a></div>
-              </form>
-            </div>
-          </div>
+<div class="container">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Login via site</h3>
         </div>
+          <div class="panel-body">
+            <form accept-charset="UTF-8" role="form">
+                    <fieldset>
+                <div class="form-group">
+                  <input class="form-control" placeholder="yourmail@example.com" name="email" type="text">
+              </div>
+              <div class="form-group">
+                <input class="form-control" placeholder="Password" name="password" type="password" value="">
+              </div>
+              <!--<div class="checkbox">
+                  <label>
+                    <input name="remember" type="checkbox" value="Remember Me"> Remember Me
+                  </label>
+                </div>-->
+              <input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
+            </fieldset>
+              </form>
+                      <hr/>
+                    <center><h4>OR</h4></center>
+                    <input class="btn btn-lg btn-facebook btn-block" type="submit" value="Login via facebook">
+          </div>
       </div>
     </div>
   </div>
