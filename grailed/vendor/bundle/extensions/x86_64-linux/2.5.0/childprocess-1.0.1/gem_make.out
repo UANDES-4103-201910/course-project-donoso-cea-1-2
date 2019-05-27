@@ -1,0 +1,5 @@
+current directory: /home/billy/Project/course-project-donoso-cea-1-2/grailed/vendor/bundle/gems/childprocess-1.0.1/ext
+/home/billy/.rvm/rubies/ruby-2.5.1/bin/ruby mkrf_conf.rb
+
+current directory: /home/billy/Project/course-project-donoso-cea-1-2/grailed/vendor/bundle/gems/childprocess-1.0.1/ext
+/home/billy/.rvm/rubies/ruby-2.5.1/bin/ruby -rrubygems /home/billy/Project/course-project-donoso-cea-1-2/grailed/vendor/bundle/gems/rake-12.3.2/exe/rake RUBYARCHDIR\=/home/billy/Project/course-project-donoso-cea-1-2/grailed/vendor/bundle/extensions/x86_64-linux/2.5.0/childprocess-1.0.1 RUBYLIBDIR\=/home/billy/Project/course-project-donoso-cea-1-2/grailed/vendor/bundle/extensions/x86_64-linux/2.5.0/childprocess-1.0.1

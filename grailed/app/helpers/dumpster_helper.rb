@@ -1,0 +1,2 @@
+module DumpsterHelper
+end
