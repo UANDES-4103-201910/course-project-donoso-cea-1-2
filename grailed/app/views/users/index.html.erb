@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%= notice %></p>
 
 <h1>Users</h1>
 
@@ -24,4 +24,50 @@
       <br>
 
       <%= link_to 'New User', new_user_path %>
+  </div>
+-->
+
+  
+  <div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h2 class="page-header">Our lovely users!</h2>
+        <section class="comment-list">
+          <!-- First Comment -->
+          <% @users.each do |user| %>
+
+            <article class="row">
+              <div class="col-md-2 col-sm-2 hidden-xs">
+                <figure class="thumbnail">
+                  <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
+                  <figcaption class="text-center" > </figcaption>  <!-- <%=user.email%>  -->
+                </figure>
+              </div>
+              <div class="col-md-10 col-sm-10">
+                <div class="panel panel-default arrow left">
+                  <div class="panel-body">
+                    <header class="text-left">
+                      <div class="comment-user"><i class="fa fa-user"></i></div>
+                      
+                      <div class="col-sm-5 col-xs-6 tital " >Name:</div><div class="col-sm-7 col-xs-6 ">user.name user.lastname </div>
+                      <div class="col-sm-5 col-xs-6 tital " >Bio:</div><div class="col-sm-7 col-xs-6 "><%=user.bio%></div>
+                      <div class="col-sm-5 col-xs-6 tital " >Mail:</div><div class="col-sm-7 col-xs-6 "><%=user.email%></div>
+                      <div class="col-sm-5 col-xs-6 tital " >Country:</div><div class="col-sm-7 col-xs-6 "><%=user.country%></div>
+                      <div class="col-sm-5 col-xs-6 tital " >City:</div><div class="col-sm-7 col-xs-6 "><%=user.city%></div>
+                      
+                      
+
+                    
+                    <p class="text-right"><!--<a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a>-->
+                      <a><%= link_to 'Show', user %> </a>
+                      <a><%=  link_to 'Edit', edit_user_path(user)  %> </a>
+                      <a><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %> </a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </article>
+<% end -%>
+
+<%= link_to 'New User', new_user_path %>
   </div>
