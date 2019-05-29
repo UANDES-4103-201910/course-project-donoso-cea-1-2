@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_13_025548) do
+ActiveRecord::Schema.define(version: 2019_05_28_235703) do
 
   create_table "blacklists", force: :cascade do |t|
     t.integer "user_id"
@@ -82,6 +82,8 @@ ActiveRecord::Schema.define(version: 2019_04_13_025548) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.string "nombre"
+    t.string "lastname"
   end
 
   create_table "votes", force: :cascade do |t|
