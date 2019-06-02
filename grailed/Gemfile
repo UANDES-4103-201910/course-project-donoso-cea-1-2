@@ -64,3 +64,4 @@ gem 'therubyracer'#debe ser reemplazado por 'mini-racer'
 
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'jquery-rails'
+gem 'devise'
