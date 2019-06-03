@@ -36,7 +36,7 @@
 
                       <% if current_user.avatar.attached? %>
                          <div  align="center"> <img src="<%= (url_for(current_user.avatar))%>" id="profile-image1" class="img-circle img-responsive">
-				                <image src="<%= (url_for(current_user.avatar))%>">
+				             
   			              <% else %>
                       <div  align="center"> <img alt="User Pic" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" id="profile-image1" class="img-circle img-responsive">
                       <% end %>
