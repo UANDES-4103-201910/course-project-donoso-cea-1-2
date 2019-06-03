@@ -7,6 +7,13 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def admins
+    @users = User.all
+    @admins = User.where("role = admin", params[:role])
+
+    #Client.where("orders_count = ?", params[:orders])
+ end
+
   # GET /users/1
   # GET /users/1.json
   def show
@@ -72,4 +79,6 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :lastname, :email, :password, :picture, :bio, :city, :country, :role)
     end
+
+
 end

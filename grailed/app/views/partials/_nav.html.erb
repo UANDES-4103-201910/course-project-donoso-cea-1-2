@@ -10,9 +10,9 @@
       <li><a href="/posts">COMPLAINS</a></li>
       <li><a href="/profile/userprofile">Profile</a></li>
       <li><a href="/users">Users</a></li>
-      <li><a href="/users/admins">Admins</a></li>
+      <li><a href="/users/admins">Admins</a></li> <!--<li><a href="/users/admins">Admins</a></li>-->
       <% if user_signed_in? %>
-        <% if(current_user.role == "admin" || current_user.role == "sadmin")%>
+        <% if(current_user.role == "admin" || current_user.role == "admin")%>
       	<li><a href="/dumpster/thedumpster">The Dumpster</a></li>
       	<li><a href="/blacklist/theblacklist">Blacklist</a></li>
 	<% end %>
