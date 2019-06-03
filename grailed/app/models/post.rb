@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+        has_one_attached :avatar
   	has_many :votes
   	has_many :comments
   	belongs_to :user

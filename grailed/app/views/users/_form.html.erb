@@ -26,8 +26,12 @@
     <%= form.label :email %><br />
     <%= form.text_field :email %>
   </div>
-
-
+  
+  <div class="field">
+    <%= form.label "Profile Photo" %><br />
+    <%= form.file_field :avatar %>
+  </div>
+  
   <div class="field">
     <%= form.label :bio %><br />
     <%= form.text_area :bio %>
@@ -39,8 +43,13 @@
   </div>
 
    <div class="field">
-    <%= form.label :role%><br />
-    <%= form.text_field :role %>
+    <%= form.label :password %><br />
+    <%= form.password_field :password %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password_confirmation, "Confirm new password" %><br />
+    <%= form.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
   <div class="field">

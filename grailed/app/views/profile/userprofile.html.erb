@@ -34,10 +34,9 @@
                       
                       <!--<img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png"  />-->
 
-                      <div  align="center"> <img alt="User Pic" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" id="profile-image1" class="img-circle img-responsive">
-
-                  <input id="profile-image-upload" class="hidden" type="file">
-                  <div style="color:#999;" >click here to change profile image</div>
+                      <% if current_user.avatar.attached? %>
+				<image src="<%= (url_for(current_user.avatar))%>">
+  			<% end %>
                   <!--Upload Image Js And Css-->
                        </div>
                 <br>

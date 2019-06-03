@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 	#asociations
+	has_one_attached :avatar
 	has_many :votes
 	has_many :comments
 	has_many :posts
@@ -14,7 +15,9 @@ class User < ApplicationRecord
 	validates :password , length: {minimum: 5 , maximum: 12}
 	#defs
 	def default_values
-		self.role = "admin" #admin and sadmin valid too
+		if self.role!="admin"
+			self.role = "normal" #admin and sadmin valid too
 		end
+	end
 	 
 end
