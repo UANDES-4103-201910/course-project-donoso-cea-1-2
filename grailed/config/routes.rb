@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'admin/admins'
   get 'profile/userprofile'
   get 'dumpster/thedumpster'
+  get 'users/admins'
   
 
   get 'home/start' , to: 'home#start'

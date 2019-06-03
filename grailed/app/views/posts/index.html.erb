@@ -49,8 +49,8 @@
                 <div class="panel panel-default arrow left">
                   <div class="panel-body">
                     <header class="text-left">
-                      <div class="comment-user"><i class="fa fa-user"></i>ADD NAME AND LASTNAME!!! <%= post.user.email %> </div>
-                      <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> Dec 16, 2014</time>
+                      <div class="comment-user"><i class="fa fa-user"></i><%= post.user.name %> <%= post.user.lastname %> </div>
+                      <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> <%= post.updated_at %> </time>
                     </header>
                     <div class="comment-post">
                       <p>
@@ -59,12 +59,21 @@
                     </div>
                     <p class="text-right"><!--<a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a>-->
                       <a><%= link_to 'Show', post %> </a>
-                      <a><%= link_to 'Edit', edit_post_path(post) %> </a>
+		      <% if user_signed_in? %>
+			<% if (post.user.id == current_user.id)%>
+			<a><%= link_to 'Edit', edit_post_path(post) %> </a>
                       <a><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %> </a>
+			<% end %>
+		      <% end %>
+                      
                     </p>
                   </div>
                 </div>
               </div>
             </article>
 <% end -%>
+<br />
 <%= link_to 'New Post', new_post_path %>
+<br />
+<br />
+<br />

@@ -14,7 +14,7 @@ class User < ApplicationRecord
 	validates :password , length: {minimum: 5 , maximum: 12}
 	#defs
 	def default_values
-		self.role = "normal" #admin and sadmin valid too
+		self.role = "admin" #admin and sadmin valid too
 		end
 	 
 end
