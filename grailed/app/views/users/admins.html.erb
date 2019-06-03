@@ -39,8 +39,10 @@
               <div class="col-md-2 col-sm-2 hidden-xs">
                 <figure class="thumbnail">
                   <% if current_user.avatar.attached? %>
-				<image src="<%= (url_for(current_user.avatar))%>">
-  			<% end %>
+				            <image src="<%= (url_for(current_user.avatar))%>">
+  			         <% else %>
+                 <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
+                 <% end %>
                   <figcaption class="text-center" > </figcaption>  <!-- <%=user.email%>  -->
                 </figure>
               </div>

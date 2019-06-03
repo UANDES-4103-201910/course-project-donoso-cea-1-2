@@ -41,9 +41,9 @@
             <article class="row">
               <div class="col-md-2 col-sm-2 hidden-xs">
                 <figure class="thumbnail">
-                  <% if post.avatar.attached? %>
-				<image src="<%= (url_for(post.avatar))%>">
-  			<% end %>
+                  <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
+              
+                  
                   <figcaption class="text-center"> </figcaption> <!-- LEYENDA DE LA IMAGEN:  <%=post.user.email%>-->
                 </figure>
               </div>
@@ -57,7 +57,11 @@
                     <div class="comment-post">
                       <p>
                         <%=post.description%>
+                        <% if post.avatar.attached? %>
+                          <p><image src="<%= (url_for(post.avatar))%>"></image></p>
+                        <% end %>
                       </p>
+
                     </div>
                     <p class="text-right"><!--<a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a>-->
                       <a><%= link_to 'Show', post %> </a>
