@@ -24,16 +24,10 @@
         <a><h4 style="color:#00b1b1;"><%=  link_to 'Editar Perfil', edit_user_path(current_user)  %> </h4></span></a>
          <li><a href="/users/edit" style="color:#00b1b1;">Cambiar contraseña</a></li>
     </div>
-     <div class="panel-body">
-         
-      <div class="box box-info">
-          
+     <div class="panel-body">  
+      <div class="box box-info">         
               <div class="box-body">
                        <div class="col-sm-6">
-                       <!--<div  align="center"> <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive">--> 
-                      
-                      <!--<img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png"  />-->
-
                       <% if current_user.avatar.attached? %>
                          <div  align="center"> <img src="<%= (url_for(current_user.avatar))%>" id="profile-image1" class="img-circle img-responsive">
 				             
@@ -47,46 +41,26 @@
                 <!-- /input-group -->
               </div>
               <div class="col-sm-6">
-                <a></a>
-              
               <h4 style="color:#00b1b1;"><%=current_user.name%> <%=current_user.lastname%></h4></span>
                 <span><p> Descripción: <%=current_user.bio%></p></span>
+                <div class="col-sm-5 col-xs-6 tital " >First Name:</div><div class="col-sm-7 col-xs-6 "><%=current_user.name%></div>
+                <div class="col-sm-5 col-xs-6 tital " >Last Name:</div><div class="col-sm-7"> <%=current_user.lastname%></div>
+                <div class="col-sm-5 col-xs-6 tital " >Email:</div><div class="col-sm-7"><%=current_user.email%></div>
+                <div class="col-sm-5 col-xs-6 tital " >Country:</div><div class="col-sm-7"><%=current_user.country%></div>
+                <div class="col-sm-5 col-xs-6 tital " >City:</div><div class="col-sm-7"><%=current_user.city%></div>
                            
               </div>
               <div class="clearfix"></div>
               <hr style="margin:5px 0 5px 0;">
       
                 
-  <div class="col-sm-5 col-xs-6 tital " >First Name:</div><div class="col-sm-7 col-xs-6 "><%=current_user.name%></div>
-       <div class="clearfix"></div>
-  <div class="bot-border"></div>
-
-
-  <div class="col-sm-5 col-xs-6 tital " >Last Name:</div><div class="col-sm-7"> <%=current_user.lastname%></div>
-    <div class="clearfix"></div>
-  <div class="bot-border"></div>
-
-  <div class="col-sm-5 col-xs-6 tital " >Email:</div><div class="col-sm-7"><%=current_user.email%></div>
-    <div class="clearfix"></div>
-  <div class="bot-border"></div>
-
-
-  <div class="col-sm-5 col-xs-6 tital " >Country:</div><div class="col-sm-7"><%=current_user.country%></div>
-  <div class="col-sm-5 col-xs-6 tital " >City:</div><div class="col-sm-7"><%=current_user.city%></div>
-
-
-   <div class="clearfix"></div>
-  <div class="bot-border"></div>
 
 
 
-    <script>
-              $(function() {
-    $('#profile-image1').on('click', function() {
-        $('#profile-image-upload').click();
-    });
-});       
-              </script>        
+     
    </div>
+</div>
+</div>
+</div>
 </div>
 
