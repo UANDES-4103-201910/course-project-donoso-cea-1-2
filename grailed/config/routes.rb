@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   
 
   get 'home/start' , to: 'home#start'
+
   #root "home#logIn"
   root "home#start"
   
