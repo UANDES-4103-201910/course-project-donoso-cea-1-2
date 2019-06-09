@@ -1,0 +1,13 @@
+current directory: /home/billy/Project/course-project-donoso-cea-1-2/grailed/vendor/bundle/gems/json-2.2.0/ext/json
+/home/billy/.rvm/rubies/ruby-2.5.1/bin/ruby -I /home/billy/.rvm/rubies/ruby-2.5.1/lib/ruby/site_ruby/2.5.0 -r ./siteconf20190608-4212-cvdnx.rb extconf.rb
+creating Makefile
+
+current directory: /home/billy/Project/course-project-donoso-cea-1-2/grailed/vendor/bundle/gems/json-2.2.0/ext/json
+make "DESTDIR=" clean
+
+current directory: /home/billy/Project/course-project-donoso-cea-1-2/grailed/vendor/bundle/gems/json-2.2.0/ext/json
+make "DESTDIR="
+make: No se hace nada para 'all'.
+
+current directory: /home/billy/Project/course-project-donoso-cea-1-2/grailed/vendor/bundle/gems/json-2.2.0/ext/json
+make "DESTDIR=" install
