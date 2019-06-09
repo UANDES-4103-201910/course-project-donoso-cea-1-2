@@ -2,8 +2,15 @@
 
 <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/home/start">COMPLAIN!</a>
+    <div class="navbar-header" href="home/start">
+      
+
+      <%= link_to root_path do %>
+      <%= image_tag ("logo80px.png"), link_to: root_path, width:'100 px', display: 'block'%>
+      <% end %>
+
+ 
+      <!--<a href="#" class="pull-left"><img src="/app/assets/images/Say it_logo-02.png"></a>-->
     </div>
     <ul class="nav navbar-nav">
       <!--<li ><a href="/" >Log In</a></li> class="active"-->
@@ -13,22 +20,28 @@
       <li><a href="/users/admins">Admins</a></li> <!--<li><a href="/users/admins">Admins</a></li>-->
       <% if user_signed_in? %>
         <% if(current_user.role == "admin" || current_user.role == "admin")%>
-      	<li><a href="/dumpster/thedumpster">The Dumpster</a></li>
-      	<li><a href="/blacklist/theblacklist">Blacklist</a></li>
-	<% end %>
-      	<!-- Search form -->
+          <li><a href="/dumpster/thedumpster">The Dumpster</a></li>
+          <li><a href="/blacklist/theblacklist">Blacklist</a></li>
+          <li><a><input class="form-control mr-sm-2" type="search" placeholder="Search"></a></li>
+          <li><a><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button></a></li>
+	      <% end %>
       <% end %>
-      <li><a><input class="form-control" type="text" placeholder="Search" aria-label="Search"></a></li>
-      
+
      <% if user_signed_in? %>
+      <% if current_user.avatar.attached? %>
+          <li><a> <img src="<%= (url_for(current_user.avatar))%>" id="profile-image1" class="img-circle img-responsive" style="width:20px;height:20px;"></a></li>
+      <%end%>
+
       <li><a style="color:#00b1b1;">
         Welcome, <%=current_user.name%> 
       </a></li>
+
       <li><a href="/users/sign_out", data-method="delete" > LogOut</a></li>
-    <% else %>
-      <li>
-        <%= link_to('Login', new_user_session_path) %>
-      </li>
+      
+      <% else %>
+        <li>
+          <%= link_to('Login', new_user_session_path) %>
+        </li>
     <% end %>
 
 
