@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  load_and_authorize_resource
 
   # GET /users
   # GET /users.json
@@ -78,9 +79,5 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :lastname, :email, :picture, :bio, :city, :country, :role, :avatar, :password ,:password_confirmation )
     end 
-
-  
-    
-    
 
 end
