@@ -37,26 +37,16 @@
     <%= form.text_area :bio %>
   </div>
 
+   <div class="field">
+    <%= form.label :country %><br />
+    <%= form.text_field :country %>
+  </div>
+
   <div class="field">
     <%= form.label :city %><br />
     <%= form.text_field :city %>
   </div>
 
-   <div class="field">
-    <%= form.label :password %><br />
-    <%= form.password_field :password %>
-  </div>
-
-  <div class="field">
-    <%= form.label :password_confirmation, "Confirm new password" %><br />
-    <%= form.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :country %><br />
-    <%= form.text_field :country %>
-  </div>
-  <br />
 
   <div class="actions">
     <%= form.submit %>
