@@ -1,56 +1,60 @@
-<%= form_with(model: user, local: true) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<div class="flex-column">
 
-      <ul>
-      <% user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+
+  <%= form_with(model: user, local: true) do |form| %>
+    <% if user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+        <ul>
+        <% user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :name %><br />
+      <%= form.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :lastname %><br />
+      <%= form.text_field :lastname %>
+    </div>
+
+
+    <div class="field">
+      <%= form.label :email %><br />
+      <%= form.text_field :email %>
+    </div>
+    
+    <div class="field">
+      <%= form.label "Profile Photo" %><br />
+      <%= form.file_field :avatar %>
+    </div>
+    
+    <div class="field">
+      <%= form.label :bio %><br />
+      <%= form.text_area :bio %>
+    </div>
+
+     <div class="field">
+      <%= form.label :country %><br />
+      <%= form.text_field :country %>
+    </div>
+
+    <div class="field">
+      <%= form.label :city %><br />
+      <%= form.text_field :city %>
+    </div>
+    <br />
+   
+    <%= link_to "Change your password", edit_user_registration_path %><br />
+    <div class="actions">
+      <br />
+      <%= form.submit %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %><br />
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :lastname %><br />
-    <%= form.text_field :lastname %>
-  </div>
-
-
-  <div class="field">
-    <%= form.label :email %><br />
-    <%= form.text_field :email %>
-  </div>
-  
-  <div class="field">
-    <%= form.label "Profile Photo" %><br />
-    <%= form.file_field :avatar %>
-  </div>
-  
-  <div class="field">
-    <%= form.label :bio %><br />
-    <%= form.text_area :bio %>
-  </div>
-
-   <div class="field">
-    <%= form.label :country %><br />
-    <%= form.text_field :country %>
-  </div>
-
-  <div class="field">
-    <%= form.label :city %><br />
-    <%= form.text_field :city %>
-  </div>
-  <br />
- 
-  <%= link_to "Change your password", edit_user_registration_path %><br />
-  <div class="actions">
-    <br />
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

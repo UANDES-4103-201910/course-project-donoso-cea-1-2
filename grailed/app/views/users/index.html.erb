@@ -1,36 +1,8 @@
-<!--<p id="notice"><%= notice %></p>
-
-<h1>Users</h1>
-
-  <div class="usuario">
-        <tbody>
-          <% @users.each do |user| %>
-            <ul>
-              <li>Email: <%= user.email %></li>
-              <li>Password: <%= user.password %></li>
-              <li>Picture: <%= user.picture %></li>
-              <li>Bio: <%= user.bio %></li>
-              <li>City: <%= user.city %></li>
-              <li>Country: <%= user.country %></li>
-              <li>Role: <%= user.role %></li>
-              <li><%= link_to 'Show', user %></li>
-              <li><%= link_to 'Edit', edit_user_path(user) %></li>
-              <li><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-            </ul>
-          <% end %>
-        </tbody>
-      </table>
-
-      <br>
-
-      <%= link_to 'New User', new_user_path %>
-  </div>
--->
-
   
   <div class="container">
   <div class="row">
     <div class="col-md-8">
+
       <h2 class="page-header">Our lovely users!</h2>
         <section class="comment-list">
           <!-- First Comment -->
@@ -64,12 +36,12 @@
                     
                     <p class="text-right"><!--<a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a>-->
                       <a><%= link_to 'Show', user %> </a>
-		      <% if user_signed_in? %>
-			<% if (user.id == current_user.id)%>
-			<a><%=  link_to 'Edit', edit_user_path(user)  %> </a>
-                      <a><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %> </a>
-			<% end %>
-		      <% end %>
+            		      <% if user_signed_in? %>
+            			       <% if (user.id == current_user.id) or (current_user.role == "admin")%>
+            		            <a><%=  link_to 'Edit', edit_user_path(user)  %> </a>
+                            <a><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %> </a>
+			                    <% end %>
+		                  <% end %>
                      
                     </p>
                   </div>
