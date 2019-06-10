@@ -15,6 +15,10 @@ class User < ApplicationRecord
 	#validates :country, :city, presence: true
 	#validates :password , length: {minimum: 5 , maximum: 12}
 	#defs
+	def self.search_by(search_term)
+		where("LOWER(name) LIKE :search_term OR LOWER(email) LIKE :search_term OR LOWER(lastname) LIKE :search_term",
+		 search_term: "%#{search_term.downcase}%")
+	end	
 
 	def default_values
 		if self.role!="admin"
