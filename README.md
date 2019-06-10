@@ -21,7 +21,7 @@ xPassword recovery
 
 -View User details
 
-xLast Access
+-Last Access
 
 -User role
 
@@ -35,7 +35,7 @@ xNew Administrator
 
 -View Administrator details
 
-xLast access
+-Last access
 
 xSet Geofence
 
@@ -73,11 +73,11 @@ xView user activity
 
 -View Post
 
-xView Title
+-View Title
 
 -VIew description and creation date
 
-xView location
+-View location
 
 xview post location on map
 
@@ -101,9 +101,9 @@ xVIew publisher profile
 
 xMark post as inappropiate
 
-xAdd comment to report comments thread
+-Add comment to report comments thread
 
-xEdit comment in report comments thread
+-Edit comment in report comments thread
 
 xTag user in comment
 
