@@ -1,4 +1,5 @@
-class FlagPosController < ApplicationController
+class FlagPoController < ApplicationController
+
   before_action :set_flag_po, only: [:show, :edit, :update, :destroy]
 
   # GET /flag_pos
@@ -15,7 +16,7 @@ class FlagPosController < ApplicationController
   # GET /flag_pos/new
   def new
       @flag_po = FlagPo.new()
-      @flag_po.post_id = params[:post_id]
+      @flag_po.post = params[:post_id]
   end
 
   # GET /flag_pos/1/edit
@@ -74,3 +75,4 @@ class FlagPosController < ApplicationController
       params.require(:flag_po).permit(:user_id, :post_id, :reason)
     end
 end
+

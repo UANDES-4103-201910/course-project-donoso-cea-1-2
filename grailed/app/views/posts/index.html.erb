@@ -71,6 +71,7 @@
 <% else %>
   <%= button_to 'Like', post_likes_path(post), method: :post %>
 <% end %>
+  <%= link_to "Report post", new_flag_po_path(post_id: post.id) %>
                       </p>
 
                     </div>

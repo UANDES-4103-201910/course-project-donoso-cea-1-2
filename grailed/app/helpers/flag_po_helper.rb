@@ -1,0 +1,2 @@
+module FlagPoHelper
+end

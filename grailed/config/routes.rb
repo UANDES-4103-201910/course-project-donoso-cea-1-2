@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   root "home#start"
   
   #get  "thedumpster" , to :"dumpster#thedumpster"
-  resources :flag_pos
+  resources :flag_po
   resources :users
   resources :comments
   resources :posts do

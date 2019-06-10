@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_10_021924) do
+ActiveRecord::Schema.define(version: 2019_06_10_041337) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -60,23 +60,11 @@ ActiveRecord::Schema.define(version: 2019_06_10_021924) do
     t.index ["post_id"], name: "index_dumpsters_on_post_id"
   end
 
-  create_table "flag_pos", force: :cascade do |t|
-    t.integer "user_id"
-    t.text "reason"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_flag_pos_on_user_id"
-  end
+# Could not dump table "flag_pos" because of following StandardError
+#   Unknown type 'reference' for column 'post'
 
-  create_table "flag_posts", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "post_id"
-    t.text "reason"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_flag_posts_on_post_id"
-    t.index ["user_id"], name: "index_flag_posts_on_user_id"
-  end
+# Could not dump table "flag_posts" because of following StandardError
+#   Unknown type 'reference' for column 'post'
 
   create_table "likes", force: :cascade do |t|
     t.integer "post_id"
