@@ -16,7 +16,9 @@ u4 = User.new(name:'Normal', lastname:'User',
 
 p1 = Post.new(description: 'Hola soy un usuario de esta pàgina web', user_id: 2)
 
+ u3.save!
+ u4.save!
+
 p1.save!
 
-# u3.save!
-# u4.save!
+
