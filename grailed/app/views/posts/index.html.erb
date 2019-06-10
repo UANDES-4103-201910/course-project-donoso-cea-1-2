@@ -35,8 +35,12 @@
             <article class="row">
               <div class="col-md-2 col-sm-2 hidden-xs">
                 <figure class="thumbnail">
-                  <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
-              
+                  <!--POST CON AVATAR DEL USUARIO-->
+                   <% if (post.user.avatar == "null" )%>
+                      <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />          
+                   <%else%>
+                      <image class="img-responsive" src="<%= (url_for(post.user.avatar))%>">
+                    <%end%>
                   
                   <figcaption class="text-center"> </figcaption> <!-- LEYENDA DE LA IMAGEN:  <%=post.user.email%>-->
                 </figure>
@@ -61,14 +65,18 @@
                     </div>
                     <p class="text-right"><!--<a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a>-->
                       <a><%= link_to 'Show', post %> </a>
-		      <% if user_signed_in? %>
-			<% if (post.user.id == current_user.id)%>
-			<a><%= link_to 'Edit', edit_post_path(post) %> </a>
-                      <a><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %> </a>
-			<% end %>
-		      <% end %>
-                      
+            		      <% if user_signed_in? %>
+            			      <% if (post.user.id == current_user.id)%>
+            			        <a><%= link_to 'Edit', edit_post_path(post) %> </a>
+                          <a><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %> </a>
+            			      <% end %>
+            		      <% end %>
                     </p>
+                    <!--VOTES!!!!-->
+                    <p class= "text-left">
+
+                    </p>
+
                   </div>
                 </div>
               </div>
