@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'users/admins'
   get 'users/edit'
   
+  #post '/upvote' => 'votes#create', as: :upvote_create
+  #post '/downvote' => 'votes#dislike', as: :downvote_create
 
   get 'home/start' , to: 'home#start'
 
@@ -16,9 +18,10 @@ Rails.application.routes.draw do
   
   #get  "thedumpster" , to :"dumpster#thedumpster"
   resources :flag_pos
-  resources :votes
   resources :users
   resources :comments
-  resources :posts
+  resources :posts do
+	resources :likes
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

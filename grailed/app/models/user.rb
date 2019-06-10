@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable , :omniauth_providers => [ :google_oauth2 ]
 	#asociations
 	has_one_attached :avatar
-	has_many :votes
+	has_many :likes, dependent: :destroy
 	has_many :comments
 	has_many :posts
 	#actions

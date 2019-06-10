@@ -36,10 +36,10 @@
               <div class="col-md-2 col-sm-2 hidden-xs">
                 <figure class="thumbnail">
                   <!--POST CON AVATAR DEL USUARIO-->
-                   <% if (post.user.avatar == "null" )%>
-                      <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />          
+                   <% if (post.user.avatar.attached? )%>
+			<image class="img-responsive" src="<%= (url_for(post.user.avatar))%>">        
                    <%else%>
-                      <image class="img-responsive" src="<%= (url_for(post.user.avatar))%>">
+                        <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />  
                     <%end%>
                   
                   <figcaption class="text-center"> </figcaption> <!-- LEYENDA DE LA IMAGEN:  <%=post.user.email%>-->
@@ -50,16 +50,27 @@
                   <div class="panel-body">
                     <header class="text-left">
                       <div class="comment-user"><i class="fa fa-user"></i><%= post.user.name %> <%= post.user.lastname %> </div>
+			
                       <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> <%= post.updated_at %> </time>
                     </header>
                     <div class="comment-post">
                       <p>
+			<br />
                         <%=post.description%>
+			<br />
                         <% if post.avatar.attached? %>
                           <span class="container" >
                             <image src="<%= (url_for(post.avatar))%>"></image>
                           </span>
+			<br />
                         <% end %>
+			<% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
+<% if pre_like %>
+  <%= button_to 'Unlike', post_like_path(post, pre_like), method: :delete %>
+<% else %>
+  <%= button_to 'Like', post_likes_path(post), method: :post %>
+<% end %>
+			<p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
                       </p>
 
                     </div>

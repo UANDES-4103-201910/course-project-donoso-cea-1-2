@@ -14,5 +14,9 @@ u4 = User.new(name:'Normal', lastname:'User',
               password:'123456', password_confirmation:'123456', email:'normal_user@uandes.cl', 
               role:'normal',city: 'Santiago', country: 'Chile',bio:'el mas bacan de los users')
 
-u3.save!
-u4.save!
+p1 = Post.new(description: 'Hola soy un usuario de esta pàgina web', user_id: 2)
+
+p1.save!
+
+# u3.save!
+# u4.save!
