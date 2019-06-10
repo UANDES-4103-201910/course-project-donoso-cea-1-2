@@ -1,8 +1,8 @@
 class Post < ApplicationRecord
         has_one_attached :avatar
 	has_many :likes, dependent: :destroy
-  	has_many :comments
-        has_many :flag_posts
+  	has_many :comments, dependent: :destroy
+        has_many :flag_posts, dependent: :destroy
   	belongs_to :user
 	#actions
 	before_save :default_values
