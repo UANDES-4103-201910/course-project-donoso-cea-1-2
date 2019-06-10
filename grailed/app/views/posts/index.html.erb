@@ -64,13 +64,7 @@
                           </span>
 			<br />
                         <% end %>
-			<p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-			<% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
-<% if pre_like %>
-  <%= button_to 'Unlike', post_like_path(post, pre_like), method: :delete %>
-<% else %>
-  <%= button_to 'Like', post_likes_path(post), method: :post %>
-<% end %>
+			
   <br />
   <%= link_to "Report post", new_flag_post_path(post_id: post.id) %>
                       </p>
@@ -87,7 +81,27 @@
                     </p>
                     <!--VOTES!!!!-->
                     <p class= "text-left">
-
+		    <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+			<% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
+<% if pre_like %>
+  <%= button_to 'Unlike', post_like_path(post, pre_like), method: :delete %>
+<% else %>
+  <%= button_to 'Like', post_likes_path(post), method: :post %><br />
+<% end %>
+	<!--	COMMENTS    !!!!-->
+	<%= link_to "Add Comment", new_comment_path(post_id: post.id) %><br /><br />
+	<% post.comments.each do |comment| %> 
+	  <%= comment.user.name %><br />
+	  <%= comment.updated_at %><br />
+	  <%= comment.comment %><br />	
+	  <% if user_signed_in? %>
+            			      <% if (comment.user.id == current_user.id || current_user.role == "admin")%>
+            			        <a><%= link_to 'Edit', edit_comment_path(comment) %> </a>
+                          <a><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %> </a>
+            			      <% end %><br /> <br />
+		
+	<% end %>
+	<% end %>
                     </p>
 
                   </div>

@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   #get  "thedumpster" , to :"dumpster#thedumpster"
   resources :users
   resources :comments
+
   resources :posts do
 	resources :likes
   end

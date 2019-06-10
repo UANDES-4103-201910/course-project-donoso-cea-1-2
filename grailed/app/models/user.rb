@@ -9,8 +9,8 @@ class User < ApplicationRecord
 	has_many :comments, dependent: :destroy
 	has_many :posts, dependent: :destroy
         has_many :flag_posts, dependent: :destroy
-        belongs_to :blacklists, dependent: :destroy
-        belongs_to :dumpsters, dependent: :destroy
+        #belongs_to :blacklists, dependent: :destroy
+        #belongs_to :dumpsters, dependent: :destroy
 
 	#actions
 	before_save :default_values
