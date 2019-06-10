@@ -49,10 +49,11 @@
                 <div class="panel panel-default arrow left">
                   <div class="panel-body">
                     <header class="text-left">
-                      <div class="comment-user"><i class="fa fa-user"></i><%= post.user.name %> <%= post.user.lastname %> </div>
+                      <div class="comment-user"><i class="fa fa-user"></i><%= post.user.name %> <%= post.user.lastname %>  <br /> <%= post.user.city %>   </div>
 			
                       <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> <%= post.updated_at %> </time>
                     </header>
+		<br /><h4>Title:  <%= post.title %></h4>
                     <div class="comment-post">
                       <p>
 			<br />
