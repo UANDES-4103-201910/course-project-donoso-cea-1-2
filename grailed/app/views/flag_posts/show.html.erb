@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Post:</strong>
+  <%= @flag_post.post %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @flag_post.user %>
+</p>
+
+<p>
+  <strong>Reason:</strong>
+  <%= @flag_post.reason %>
+</p>
+
+<%= link_to 'Edit', edit_flag_post_path(@flag_post) %> |
+<%= link_to 'Back', flag_posts_path %>

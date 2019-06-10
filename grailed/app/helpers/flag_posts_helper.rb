@@ -1,0 +1,2 @@
+module FlagPostsHelper
+end

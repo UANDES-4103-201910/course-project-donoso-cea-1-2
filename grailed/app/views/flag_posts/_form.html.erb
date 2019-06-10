@@ -1,25 +1,26 @@
-<%= form_with(model: flag_po, local: true) do |form| %>
-  <% if flag_po.errors.any? %>
+<%= form_with(model: flag_post, local: true) do |form| %>
+  <% if flag_post.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(flag_po.errors.count, "error") %> prohibited this flag_po from being saved:</h2>
+      <h2><%= pluralize(flag_post.errors.count, "error") %> prohibited this flag_post from being saved:</h2>
 
       <ul>
-      <% flag_po.errors.full_messages.each do |message| %>
+      <% flag_post.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
+   <br />
 
   <div class="field">
-    <%= form.label :post_id %>
     <%= form.hidden_field :post_id %>
   </div>
 
   <div class="field">
     <%= form.label :reason %>
-    <%= form.text_area :reason %>
+    <%= form.text_field :reason %>
   </div>
+  <br />
 
   <div class="actions">
     <%= form.submit %>

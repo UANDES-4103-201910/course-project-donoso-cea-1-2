@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :flag_posts
   devise_for :users, controllers: { registrations: 'registrations', :omniauth_callbacks => "omniauth_callbacks" }
 
   get 'blacklist/theblacklist'
@@ -17,7 +18,6 @@ Rails.application.routes.draw do
   root "home#start"
   
   #get  "thedumpster" , to :"dumpster#thedumpster"
-  resources :flag_po
   resources :users
   resources :comments
   resources :posts do

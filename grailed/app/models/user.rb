@@ -8,7 +8,7 @@ class User < ApplicationRecord
 	has_many :likes, dependent: :destroy
 	has_many :comments
 	has_many :posts
-        has_many :flag_pos
+        has_many :flag_posts
 	#actions
 	before_save :default_values
 	#validates
