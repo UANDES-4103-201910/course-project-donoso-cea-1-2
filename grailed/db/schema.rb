@@ -63,6 +63,16 @@ ActiveRecord::Schema.define(version: 2019_06_10_031506) do
 # Could not dump table "flag_pos" because of following StandardError
 #   Unknown type 'reference' for column 'post'
 
+  create_table "flag_posts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
+    t.text "reason"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_flag_posts_on_post_id"
+    t.index ["user_id"], name: "index_flag_posts_on_user_id"
+  end
+
   create_table "likes", force: :cascade do |t|
     t.integer "post_id"
     t.integer "user_id"
@@ -110,6 +120,16 @@ ActiveRecord::Schema.define(version: 2019_06_10_031506) do
     t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer "user_id_id"
+    t.integer "post_id_id"
+    t.string "vote"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id_id"], name: "index_votes_on_post_id_id"
+    t.index ["user_id_id"], name: "index_votes_on_user_id_id"
   end
 
 end
