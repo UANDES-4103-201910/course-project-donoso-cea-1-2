@@ -1,4 +1,6 @@
 class ProfileController < ApplicationController
   def userprofile
-  end
+      @posts = Post.all
+    end
+
 end

@@ -29,6 +29,9 @@
      <% if user_signed_in? %>
       <% if current_user.avatar.attached? %>
           <li><a href="/profile/userprofile" > <img src="<%= (url_for(current_user.avatar))%>" id="profile-image1" class="img-circle img-responsive" style="width:30px;height:30px;"></a></li>
+      <%else%>
+        <li><a href="/profile/userprofile" > <img id="profile-image1" class="img-circle img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" style="width:30px;height:30px;" ></a></li>
+
       <%end%>
 
       <li><a href="/profile/userprofile" style="color:#00b1b1;">

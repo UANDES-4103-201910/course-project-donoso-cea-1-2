@@ -1,5 +1,9 @@
 # README
 
+USER 
+admin@uandes.cl
+clave: 123456
+
 Postman:
 https://www.getpostman.com/collections/4aa64108fe44ee4c66d1
 
@@ -119,7 +123,7 @@ xSearch post by author
 
 -Search user by nickname
 
--Search user by location
+xSearch user by location
 
 
 

@@ -1,7 +1,7 @@
  <div class="container">
   <div class="row">
     <div class="col-md-8">
-      <h2 class="page-header">Our lovely Admins!</h2>
+      <h2 class="page-header">OUR ADMINS</h2>
         <section class="comment-list">
           <!-- First Comment -->
           <% @users.each do |user| %> 
@@ -24,7 +24,7 @@
                       <div class="comment-user"><i class="fa fa-user"></i></div>
                       
                       <div class="col-sm-5 col-xs-6 tital " >Name:</div><div class="col-sm-7 col-xs-6 "><%=user.name %> <%=user.lastname%></div>
-                      <div class="col-sm-5 col-xs-6 tital " >Bio:</div><div class="col-sm-7 col-xs-6 "><%=user.bio%></div>
+                      <div class="col-sm-5 col-xs-6 tital " >Bio:</div><div class="col-sm-7 col-xs-6 "><i>"<%=user.bio%>"</i></div>
                       <div class="col-sm-5 col-xs-6 tital " >Mail:</div><div class="col-sm-7 col-xs-6 "><%=user.email%></div>
                       <div class="col-sm-5 col-xs-6 tital " >Country:</div><div class="col-sm-7 col-xs-6 "><%=user.country%></div>
                       <div class="col-sm-5 col-xs-6 tital " >City:</div><div class="col-sm-7 col-xs-6 "><%=user.city%></div>

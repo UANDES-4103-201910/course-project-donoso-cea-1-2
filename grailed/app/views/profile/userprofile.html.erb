@@ -42,7 +42,7 @@
               </div>
               <div class="col-sm-6">
               <h4 style="color:#00b1b1;"><%=current_user.name%> <%=current_user.lastname%></h4></span>
-                <span><p> Descripción: <%=current_user.bio%></p></span>
+                <span><p><i>"<%=current_user.bio%></i></p></span>
                 <div class="col-sm-5 col-xs-6 tital " >First Name:</div><div class="col-sm-7 col-xs-6 "><%=current_user.name%></div>
                 <div class="col-sm-5 col-xs-6 tital " >Last Name:</div><div class="col-sm-7"> <%=current_user.lastname%></div>
                 <div class="col-sm-5 col-xs-6 tital " >Email:</div><div class="col-sm-7"><%=current_user.email%></div>
@@ -52,15 +52,73 @@
               </div>
               <div class="clearfix"></div>
               <hr style="margin:5px 0 5px 0;">
-      
-                
-
-
-
-     
+  
    </div>
 </div>
 </div>
 </div>
 </div>
 
+</br>
+
+<div class="text-center"><h2>Mis Posts</h2></div>
+</br>
+<div>
+ <% @posts.each do |post| %>
+  <% if (post.user.id == current_user.id)%>
+
+
+            <article class="row">
+              <div class="col-md-2 col-sm-2 hidden-xs">
+                <figure class="thumbnail">
+                  <!--POST CON AVATAR DEL USUARIO-->
+                   <% if (post.user.avatar.attached? )%>
+                     <image class="img-responsive" src="<%= (url_for(post.user.avatar))%>">        
+                   <%else%>
+                      <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />  
+                    <%end%>            
+                  <figcaption class="text-center" href="/user/show" > <%= post.user.name %>  </figcaption> <!-- LEYENDA DE LA IMAGEN:  <%=post.user.email%>-->
+                </figure>
+              </div>
+              <div class="col-md-10 col-sm-10">
+                <div class="panel panel-default arrow left">
+                  <div class="panel-body">
+
+                    <p class="text-right">
+                      <!--<a><%= link_to 'Show', post %> </a>-->
+                      <% if user_signed_in? %>
+                        <% if (post.user.id == current_user.id || current_user.role == "admin")%>
+                          <a><%= link_to 'Edit', edit_post_path(post) %> </a>
+                          <a><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %> </a>
+                        <% end %>
+                      <% end %>
+                    </p>
+                    <div class="col-md-10 col-sm-10">
+                      <header class="text-left">
+                        <h4 class="comment-user" ><%= post.user.name %> <%= post.user.lastname %> on <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> <%= post.updated_at %> </time></h4>
+                      </header> 
+                        <h5><%= post.user.city %> </h5>
+                      </header>
+                      <br />
+                      <h4>Title:  <%= post.title %></h4> 
+                    <div class="comment-post">
+                      <p>
+                        <i>"<%=post.description%>"</i>
+                       <br />
+                        <% if post.avatar.attached? %>
+                          <span class="container" >
+                            <image src="<%= (url_for(post.avatar))%>"></image>
+                          </span>
+                         <br />
+                        <% end %>
+                        <br />
+                      </p>
+                      <p class= "text-left">
+                      <a><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></a>
+  <%end%>
+<%end%>
+
+</div>
+</div>
+</div>
+</div>

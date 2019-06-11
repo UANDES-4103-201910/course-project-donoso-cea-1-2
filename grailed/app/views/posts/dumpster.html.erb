@@ -7,9 +7,14 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8">
+      <h4 >Search posts by title/description</h4>
+        <%= form_for "", url: posts_dumpster_path, role: "search", method: :get do %>
+        <input class="form-control mr-sm-2" type="search" placeholder="Search Posts" <%= text_field_tag :search, @search_term, placeholder: "Search"%>
+  <% end %>
+  <br />
       <div class="panel panel-default arrow left">
         <div class="container">
-          <h2 class="page-header">Dumpster:
+          <h2 class="page-header">The Dumpster:
             <h5>
               <!--<%= link_to 'New Post', new_post_path %>-->
             </h5>
@@ -24,11 +29,7 @@
         </div>
       </div>
         <section class="comment-list">
-	<h4 >Search posts by title/description</h4>
-        <%= form_for "", url: posts_dumpster_path, role: "search", method: :get do %>
-        <%= text_field_tag :search, @search_term, placeholder: "Search"%>
-	<% end %>
-	<br />
+	
 
           <!-- First Comment -->
           <% @posts.each do |post| %>

@@ -2,115 +2,151 @@
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <!------ Include the above in your HEAD tag ---------->
 
 <div class="container">
   <div class="row">
     <div class="col-md-8">
+      <h4 >Search posts by title/description</h4>
+        <div>
+        <%= form_for "", url: posts_path, role: "search", method: :get do %>
+          <input class="form-control mr-sm-2" type="search" placeholder="Search Posts" 
+          <%= text_field_tag :search, @search_term, placeholder: "Search"%>
+        <% end %>
+        </div>
+        <br>
+      </br>
+
       <div class="panel panel-default arrow left">
         <div class="container">
-          <h2 class="page-header">Leave a Post:
+          <h2 class="page-header">Leave a Post: </h2>
             <h5>
               <!--<%= link_to 'New Post', new_post_path %>-->
             </h5>
-            <h4>
+            
               <div class=row>
-                  <div class="col-md-4">
+                   
+                  <div class="col-md-10">
                     <%= render 'form', post: @newpost %>
-                    
+                
                   </div>
               </div>
-            </h4>
-          </h2>
+            
+             </br>
         </div>
       </div>
 
       <h2 class="page-header">Some Complains from our lovely users!
       </h2>
         <section class="comment-list">
-	<h4 >Search posts by title/description</h4>
-        <%= form_for "", url: posts_path, role: "search", method: :get do %>
-        <%= text_field_tag :search, @search_term, placeholder: "Search"%>
-	<% end %>
-	<br />
+
 
           <!-- First Comment -->
           <% @posts.each do |post| %>
-	  <%if (post.visible == "yes" )%>
+
             <article class="row">
               <div class="col-md-2 col-sm-2 hidden-xs">
                 <figure class="thumbnail">
                   <!--POST CON AVATAR DEL USUARIO-->
                    <% if (post.user.avatar.attached? )%>
-			<image class="img-responsive" src="<%= (url_for(post.user.avatar))%>">        
+			               <image class="img-responsive" src="<%= (url_for(post.user.avatar))%>">        
                    <%else%>
-                        <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />  
-                    <%end%>
-                  
-                  <figcaption class="text-center"> </figcaption> <!-- LEYENDA DE LA IMAGEN:  <%=post.user.email%>-->
+                      <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />  
+                    <%end%>            
+                  <figcaption class="text-center" href="/user/show" > <%= post.user.name %>  </figcaption> <!-- LEYENDA DE LA IMAGEN:  <%=post.user.email%>-->
                 </figure>
               </div>
               <div class="col-md-10 col-sm-10">
                 <div class="panel panel-default arrow left">
                   <div class="panel-body">
-                    <header class="text-left">
-                      <div class="comment-user"><i class="fa fa-user"></i><%= post.user.name %> <%= post.user.lastname %>  <br /> <%= post.user.city %>   </div>
-			
-                      <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> <%= post.updated_at %> </time>
-                    </header>
-		<br /><h4>Title:  <%= post.title %></h4>
+
+                    <p class="text-right">
+                      <!--<a><%= link_to 'Show', post %> </a>-->
+                      <a><%= link_to "Report post", new_flag_post_path(post_id: post.id) %></a>
+                      <% if user_signed_in? %>
+                        <% if (post.user.id == current_user.id || current_user.role == "admin")%>
+                          <a><%= link_to 'Edit', edit_post_path(post) %> </a>
+                          <a><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %> </a>
+                        <% end %>
+                      <% end %>
+                    </p>
+                    <div class="col-md-10 col-sm-10">
+                      <header class="text-left">
+                        <h4 class="comment-user" ><%= post.user.name %> <%= post.user.lastname %> on <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> <%= post.updated_at %> </time></h4>
+                      </header> 
+                        <h5><%= post.user.city %> </h5>
+                      </header>
+                      <br />
+                      <h4>Title:  <%= post.title %></h4> 
                     <div class="comment-post">
                       <p>
-			<br />
-                        <%=post.description%>
-			<br />
+                        <i>"<%=post.description%>"</i>
+                       <br />
                         <% if post.avatar.attached? %>
                           <span class="container" >
                             <image src="<%= (url_for(post.avatar))%>"></image>
                           </span>
-			<br />
+                         <br />
                         <% end %>
-			
-  <br />
-  <%= link_to "Report post", new_flag_post_path(post_id: post.id) %>
+                        <br />
                       </p>
-
+                      <p class= "text-left">
+                      <a><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></a>
+                      <a><% pre_like = post.likes.find { |like| like.user_id == current_user.id} %></a>
+                      <% if pre_like %>
+                        <a><%= button_to 'Unlike', post_like_path(post, pre_like), method: :delete %></a>
+                      <% else %>
+                        <a><%= button_to 'Like', post_likes_path(post), method: :post %><br /></a>
+                      <% end %>
+                      <br />
+                               <!-- COMMENTS    !!!!-->
+                     <%= link_to "Add a new Comment", new_comment_path(post_id: post.id) %><br /><br />
+                     <br/>
                     </div>
-                    <p class="text-right"><!--<a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a>-->
-                      <a><%= link_to 'Show', post %> </a>
-            		      <% if user_signed_in? %>
-            			      <% if (post.user.id == current_user.id || current_user.role == "admin")%>
-            			        <a><%= link_to 'Edit', edit_post_path(post) %> </a>
-                          <a><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %> </a>
-            			      <% end %>
-            		      <% end %>
-	
+                    <h5>COMMENTS</h5>
+                    <br/>
+                      <% post.comments.each do |comment| %> 
+                        <div class="comment"> 
+                          <div class="col-md-2 col-sm-2 hidden-xs"></div>
+                          <div class=col-xs->
+                            <% if (comment.user.avatar.attached? )%>
+                              <span><image id="profile-image1" class="img-circle img-responsive" src="<%= (url_for(comment.user.avatar))%>" style="width:30px;height:30px;"> </span> 
+                            <%else%>
+                             <span><img id="profile-image1" class="img-circle img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" style="width:30px;height:30px;" >
+                            <%end%>
+                          </div>
+                          <div class="col-md-2 col-sm-2 hidden-xs"></div>
+
+                          <div class="col-xs-">
+                            <span><%= comment.user.name %></span> on <span><%= comment.updated_at %></span><br />
+                            <div class="col-md-2 col-sm-2 hidden-xs"></div>
+                            <span><i>"<%= comment.comment %>"</i></span><br />  
+                            <% if user_signed_in? %>
+                              <% if (comment.user.id == current_user.id || current_user.role == "admin")%>
+                                <p class="text-right">
+                                  <a><%= link_to 'Edit', edit_comment_path(comment) %> </a>
+                                  <a><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %> </a>
+                                </p>
+                              <% end %><br /> <br />
+                            <% end %>
+                          </div>
+                          <% end %>
+                        
+                      </div>  
                     </p>
+                    
+                    </div>
+
+                      
+    
                     <!--VOTES!!!!-->
-                    <p class= "text-left">
-		    <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-			<% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
-<% if pre_like %>
-  <%= button_to 'Unlike', post_like_path(post, pre_like), method: :delete %>
-<% else %>
-  <%= button_to 'Like', post_likes_path(post), method: :post %><br />
-<% end %>
-	<!--	COMMENTS    !!!!-->
-	<%= link_to "Add Comment", new_comment_path(post_id: post.id) %><br /><br />
-	<% post.comments.each do |comment| %> 
-	  <%= comment.user.name %><br />
-	  <%= comment.updated_at %><br />
-	  <%= comment.comment %><br />	
-	  <% if user_signed_in? %>
-            			      <% if (comment.user.id == current_user.id || current_user.role == "admin")%>
-            			        <a><%= link_to 'Edit', edit_comment_path(comment) %> </a>
-                          <a><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %> </a>
-            			      <% end %><br /> <br />
-		
-	<% end %>
-	<% end %>
-	<% end %>
-                    </p>
+                    
 
                   </div>
                 </div>
