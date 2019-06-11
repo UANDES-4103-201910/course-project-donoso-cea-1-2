@@ -28,6 +28,11 @@
       <h2 class="page-header">Some Complains from our lovely users!
       </h2>
         <section class="comment-list">
+	<h4 >Search posts by title/description</h4>
+        <%= form_for "", url: posts_path, role: "search", method: :get do %>
+        <%= text_field_tag :search, @search_term, placeholder: "Search"%>
+	<% end %>
+	<br />
 
           <!-- First Comment -->
           <% @posts.each do |post| %>
@@ -79,6 +84,7 @@
                           <a><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %> </a>
             			      <% end %>
             		      <% end %>
+	
                     </p>
                     <!--VOTES!!!!-->
                     <p class= "text-left">

@@ -99,7 +99,7 @@ xFollow post
 
 xVIew publisher profile
 
-xMark post as inappropiate
+-Mark post as inappropiate
 
 -Add comment to report comments thread
 
@@ -113,13 +113,13 @@ xProvide AUP and TOS documents
 
 xReport abusive content
 
-xSearch post by word in title/description
+-Search post by word in title/description
 
-xSearh post by author
+xSearch post by author
 
-xSearch user by nickname
+-Search user by nickname
 
-xSear user by location
+-Search user by location
 
 
 

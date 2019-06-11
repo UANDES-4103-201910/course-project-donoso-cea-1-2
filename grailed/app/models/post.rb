@@ -14,4 +14,9 @@ class Post < ApplicationRecord
 		self.status = "uns" #uns--> unsolved - s-->solved
 		self.visible = "yes" #"no" when the post is in the dumpster or flagged
 		end
+
+	def self.search_by(search_term)
+		where("LOWER(title) LIKE :search_term OR LOWER(description) LIKE :search_term ",
+		 search_term: "%#{search_term.downcase}%")
+	end
 end

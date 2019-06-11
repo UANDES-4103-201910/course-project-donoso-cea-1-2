@@ -6,8 +6,14 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
-    @newpost = Post.new
+    if params[:search]
+      @search_term = params[:search]
+      @posts = @posts.search_by(@search_term)
+      @newpost = Post.new
+    else
+      @posts = Post.all
+      @newpost = Post.new
+    end
   end
 
   # GET /posts/1
@@ -17,7 +23,7 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-	    @comment = Comment.new(post_id: params[:post_id])
+	@post = Post.new
   end
 
   # GET /posts/1/edit
@@ -31,7 +37,7 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
 
     respond_to do |format|
-      if @post.save || @post.attach(params[:avatar])
+      if @post.save #|| @post.attach(params[:avatar])
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
@@ -45,7 +51,7 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1.json
   def update
     respond_to do |format|
-      if @post.update(post_params) || @post.attach(params[:avatar])
+      if @post.update(post_params) #|| @post.attach(params[:avatar])
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
