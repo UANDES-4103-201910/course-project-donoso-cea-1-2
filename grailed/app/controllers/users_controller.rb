@@ -9,8 +9,9 @@ class UsersController < ApplicationController
     if params[:search]
       @search_term = params[:search]
       @users = @users.search_by(@search_term)
+    else
+      @users = User.all
     end
-    @users = User.all
   end
 
   def admins
