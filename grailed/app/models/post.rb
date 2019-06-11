@@ -19,4 +19,8 @@ class Post < ApplicationRecord
 		where("LOWER(title) LIKE :search_term OR LOWER(description) LIKE :search_term ",
 		 search_term: "%#{search_term.downcase}%")
 	end
+
+	def self.change_visible(string)
+		self.visible = string
+	end
 end

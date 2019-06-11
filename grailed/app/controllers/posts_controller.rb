@@ -16,6 +16,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def dumpster
+     @posts = Post.all
+ 
+  end
   # GET /posts/1
   # GET /posts/1.json
   def show
@@ -23,7 +27,7 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-	@post = Post.new
+    @post = Post.new
   end
 
   # GET /posts/1/edit

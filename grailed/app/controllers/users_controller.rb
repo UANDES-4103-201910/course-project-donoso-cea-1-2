@@ -21,6 +21,11 @@ class UsersController < ApplicationController
     #Client.where("orders_count = ?", params[:orders])
  end
 
+  def blacklist
+  	@users = User.all
+	@blacklisteds = User.where("blacklisted = yes", params[:role])
+  end
+
   # GET /users/1
   # GET /users/1.json
   def show

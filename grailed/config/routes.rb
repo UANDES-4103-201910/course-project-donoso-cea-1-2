@@ -5,9 +5,13 @@ Rails.application.routes.draw do
   get 'blacklist/theblacklist'
   get 'admin/admins'
   get 'profile/userprofile'
-  get 'dumpster/thedumpster'
+
   get 'users/admins'
   get 'users/edit'
+  get 'users/blacklist'
+  get 'posts/dumpster'
+  get 'users/new_admin'
+
   
   #post '/upvote' => 'votes#create', as: :upvote_create
   #post '/downvote' => 'votes#dislike', as: :downvote_create

@@ -49,17 +49,17 @@ xRemove geofence
 
 xDelete Administrator
 
-xView User blacklist
+-View User blacklist(only if user hardcoded with blacklisted=="no" and blacklisted.default=="yes")
 
 xSearch for user in blacklist
 
 xRestore User from blacklist
 
-xVIew Dumpster
+-VIew Dumpster(only if post hardcoded with visible=="no" and visible.default=="yes")
 
 xRecover (republish) post from dumpster
 
-xSearch for post in dumpster
+-Search for post in dumpster
 
 -View User profile
 

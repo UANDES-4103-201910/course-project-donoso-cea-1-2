@@ -27,6 +27,7 @@ class User < ApplicationRecord
 		if self.role!="admin"
 			self.role = "normal" #admin and sadmin valid too
 		end
+		self.blacklisted = "no"
 	end
 	
 	def self.from_omniauth(auth)

@@ -1,22 +1,19 @@
-  
-  <div class="container">
+ <div class="container">
   <div class="row">
     <div class="col-md-8">
-      <h4 > Search users by name or location</h4>
-      <%= form_for "", url: users_path, role: "search", method: :get do %>
-        <%= text_field_tag :search, @search_term, placeholder: "Search"%>
-      <% end%>
-      <h2 class="page-header">Our lovely users!</h2>
+      <h2 class="page-header">Blacklist, shame on you guys!!</h2>
         <section class="comment-list">
           <!-- First Comment -->
-          <% @users.each do |user| %>
-	   <% if (user.role == "normal" && user.blacklisted== "no")%>
+          <% @users.each do |user| %> 
+          <% if user.blacklisted == "yes"%> 
             <article class="row">
               <div class="col-md-2 col-sm-2 hidden-xs">
                 <figure class="thumbnail">
                   <% if user.avatar.attached? %>
-				<image src="<%= (url_for(user.avatar))%>">
-  			<% end %>
+				            <image src="<%= (url_for(user.avatar))%>">
+  			         <% else %>
+                 <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
+                 <% end %>
                   <figcaption class="text-center" > </figcaption>  <!-- <%=user.email%>  -->
                 </figure>
               </div>
@@ -27,32 +24,30 @@
                       <div class="comment-user"><i class="fa fa-user"></i></div>
                       
                       <div class="col-sm-5 col-xs-6 tital " >Name:</div><div class="col-sm-7 col-xs-6 "><%=user.name %> <%=user.lastname%></div>
-			
                       <div class="col-sm-5 col-xs-6 tital " >Bio:</div><div class="col-sm-7 col-xs-6 "><%=user.bio%></div>
                       <div class="col-sm-5 col-xs-6 tital " >Mail:</div><div class="col-sm-7 col-xs-6 "><%=user.email%></div>
                       <div class="col-sm-5 col-xs-6 tital " >Country:</div><div class="col-sm-7 col-xs-6 "><%=user.country%></div>
                       <div class="col-sm-5 col-xs-6 tital " >City:</div><div class="col-sm-7 col-xs-6 "><%=user.city%></div>
-
                       
                       
 
                     
                     <p class="text-right"><!--<a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a>-->
-                      <a><%= link_to 'Show', user %> </a>
-            		      <% if user_signed_in? %>
-            			       <% if (user.id == current_user.id) or (current_user.role == "admin")%>
-            		            <a><%=  link_to 'Edit', edit_user_path(user)  %> </a>
-                            <a><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %> </a>
-			                    <% end %>
-		                  <% end %>
+                    <a><%= link_to 'Show', user %> </a>
+		                <% if user_signed_in? %>
+		                	<% if (user.id == current_user.id) or (current_user.role=="admin")%>
+			                  <a><%=  link_to 'Edit', edit_user_path(user)  %> </a>
+                        <a><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %> </a>
+			                <% end %>
+		                <% end %>
                      
                     </p>
                   </div>
                 </div>
               </div>
             </article>
-<% end %>
-<% end -%>
+        <% end -%>    
+		<% end -%>
 
 
   </div>

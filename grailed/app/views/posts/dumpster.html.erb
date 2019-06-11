@@ -9,14 +9,13 @@
     <div class="col-md-8">
       <div class="panel panel-default arrow left">
         <div class="container">
-          <h2 class="page-header">Leave a Post:
+          <h2 class="page-header">Dumpster:
             <h5>
               <!--<%= link_to 'New Post', new_post_path %>-->
             </h5>
             <h4>
               <div class=row>
                   <div class="col-md-4">
-                    <%= render 'form', post: @newpost %>
                     
                   </div>
               </div>
@@ -24,19 +23,16 @@
           </h2>
         </div>
       </div>
-
-      <h2 class="page-header">Some Complains from our lovely users!
-      </h2>
         <section class="comment-list">
 	<h4 >Search posts by title/description</h4>
-        <%= form_for "", url: posts_path, role: "search", method: :get do %>
+        <%= form_for "", url: posts_dumpster_path, role: "search", method: :get do %>
         <%= text_field_tag :search, @search_term, placeholder: "Search"%>
 	<% end %>
 	<br />
 
           <!-- First Comment -->
           <% @posts.each do |post| %>
-	  <%if (post.visible == "yes" )%>
+	    <% if (post.user.blacklisted == "yes" && post.visible == "no" )%>
             <article class="row">
               <div class="col-md-2 col-sm-2 hidden-xs">
                 <figure class="thumbnail">
@@ -72,46 +68,21 @@
                         <% end %>
 			
   <br />
-  <%= link_to "Report post", new_flag_post_path(post_id: post.id) %>
                       </p>
 
                     </div>
                     <p class="text-right"><!--<a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a>-->
                       <a><%= link_to 'Show', post %> </a>
             		      <% if user_signed_in? %>
-            			      <% if (post.user.id == current_user.id || current_user.role == "admin")%>
-            			        <a><%= link_to 'Edit', edit_post_path(post) %> </a>
+            			      <% if ( current_user.role == "admin")%>
+            			        
                           <a><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %> </a>
+		<a> Link to restaurar</a>
             			      <% end %>
             		      <% end %>
-	
-                    </p>
-                    <!--VOTES!!!!-->
-                    <p class= "text-left">
-		    <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-			<% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
-<% if pre_like %>
-  <%= button_to 'Unlike', post_like_path(post, pre_like), method: :delete %>
-<% else %>
-  <%= button_to 'Like', post_likes_path(post), method: :post %><br />
-<% end %>
-	<!--	COMMENTS    !!!!-->
-	<%= link_to "Add Comment", new_comment_path(post_id: post.id) %><br /><br />
-	<% post.comments.each do |comment| %> 
-	  <%= comment.user.name %><br />
-	  <%= comment.updated_at %><br />
-	  <%= comment.comment %><br />	
-	  <% if user_signed_in? %>
-            			      <% if (comment.user.id == current_user.id || current_user.role == "admin")%>
-            			        <a><%= link_to 'Edit', edit_comment_path(comment) %> </a>
-                          <a><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %> </a>
-            			      <% end %><br /> <br />
-		
-	<% end %>
-	<% end %>
 	<% end %>
                     </p>
-
+                    
                   </div>
                 </div>
               </div>

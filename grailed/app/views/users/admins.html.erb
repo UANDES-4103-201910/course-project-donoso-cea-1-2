@@ -33,9 +33,10 @@
 
                     
                     <p class="text-right"><!--<a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a>-->
-                    <!--<a><%= link_to 'Show', user %> </a>-->
+                    <a><%= link_to 'Show', user %> </a>
 		                <% if user_signed_in? %>
 		                	<% if (user.id == current_user.id) or (current_user.role=="admin")%>
+					
 			                  <a><%=  link_to 'Edit', edit_user_path(user)  %> </a>
                         <a><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %> </a>
 			                <% end %>
