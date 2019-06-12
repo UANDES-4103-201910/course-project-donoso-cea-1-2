@@ -20,7 +20,7 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <ul>  
-        <h4 >User Profile</h4>
+        <h4 >My Profile</h4>
         <a><h4 style="color:#00b1b1;"><%=  link_to 'Editar Perfil', edit_user_path(current_user)  %> </h4></span></a>
          
     </div>
@@ -52,6 +52,15 @@
               </div>
               <div class="clearfix"></div>
               <hr style="margin:5px 0 5px 0;">
+
+                 <div class="col-sm-10 col-xs-6 tital "  >STATISTICS</div><div class="col-sm-7"><a></a></div></br>
+                  <p>
+                  <div class="col-sm-5 col-xs-6 tital " >#Likes:</div><div class="col-sm-7"><a><%= current_user.likes.count  %> </a></div>
+                  <div class="col-sm-5 col-xs-6 tital " >#Posts:</div><div class="col-sm-7"><%= current_user.posts.count%></div>
+                  <div class="col-sm-5 col-xs-6 tital " >#Comments:</div><div class="col-sm-7"><%=current_user.comments.count%></div>
+                  </p>              
+
+
   
    </div>
 </div>
@@ -115,6 +124,50 @@
                       </p>
                       <p class= "text-left">
                       <a><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></a>
+                      <a><% pre_like = post.likes.find { |like| like.user_id == current_user.id} %></a>
+                      <% if pre_like %>
+                        <a><%= button_to 'Unlike', post_like_path(post, pre_like), method: :delete %></a>
+                      <% else %>
+                        <a><%= button_to 'Like', post_likes_path(post), method: :post %><br /></a>
+                      <% end %>
+                      <br />
+                               <!-- COMMENTS    !!!!-->
+                     <%= link_to "Add a new Comment", new_comment_path(post_id: post.id) %><br /><br />
+                     <br/>
+                    </div>
+                    <h5>COMMENTS</h5>
+                    <br/>
+
+
+                    
+                      <% post.comments.each do |comment| %> 
+                        <div class="comment"> 
+                          <div class="col-md-2 col-sm-2 hidden-xs"></div>
+                          <div class=col-xs->
+                            <% if (comment.user.avatar.attached? )%>
+                              <span><image id="profile-image1" class="img-circle img-responsive" src="<%= (url_for(comment.user.avatar))%>" style="width:30px;height:30px;"> </span> 
+                            <%else%>
+                             <span><img id="profile-image1" class="img-circle img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" style="width:30px;height:30px;" >
+                            <%end%>
+                          </div>
+                          <div class="col-md-2 col-sm-2 hidden-xs"></div>
+
+                          <div class="col-xs-">
+                            <span><%= comment.user.name %></span> on <span><%= comment.updated_at %></span><br />
+                            <div class="col-md-2 col-sm-2 hidden-xs"></div>
+                            <span><i>"<%= comment.comment %>"</i></span><br />  
+                            <% if user_signed_in? %>
+                              <% if (comment.user.id == current_user.id || current_user.role == "admin")%>
+                                <p class="text-right">
+                                  <a><%= link_to 'Edit', edit_comment_path(comment) %> </a>
+                                  <a><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %> </a>
+                                </p>
+                              <% end %><br /> <br />
+                            <% end %>
+                          </div>
+                          <% end %>
+                        
+                      </div>  
   <%end%>
 <%end%>
 

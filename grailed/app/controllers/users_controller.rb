@@ -41,6 +41,9 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def countLikes
+    @likes = User.likes 
+  end
   # POST /users
   # POST /users.json
   def create
